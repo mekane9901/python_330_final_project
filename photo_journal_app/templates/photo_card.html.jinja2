@@ -1,0 +1,22 @@
+<!-- templates/photo_card.html.jinja2 -->
+<div id="photo-{{ photo.doc_id }}"
+     class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-4">
+    <img class="rounded-t-lg" src="/static{{ photo.file_path }}" alt="" />
+    <div class="p-5">
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ photo.entry }}</p>
+        <div class="flex gap-4">
+            <button hx-get="/edit-photo-form?photo_id={{ photo.doc_id }}"
+                    hx-target="#photo-{{ photo.doc_id }}"
+                    hx-swap="outerHTML"
+                    class="rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white hover:bg-yellow-400">
+                Edit
+            </button>
+            <button hx-delete="/delete-photo?photo_id={{ photo.doc_id }}"
+                    hx-target="#photo-{{ photo.doc_id }}"
+                    hx-swap="outerHTML"
+                    class="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white hover:bg-red-500">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
